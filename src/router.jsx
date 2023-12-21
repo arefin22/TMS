@@ -5,6 +5,9 @@ import ErrorPage from "./pages/ErrorPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Home/Login";
 import User from "./pages/Home/User";
+import Register from "./pages/Home/Register";
+import Profile from "./pages/Dashboard/Profile";
+import TaskManager from "./pages/Dashboard/TaskManager";
 
 const router = createBrowserRouter([
     {
@@ -16,23 +19,38 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home />
             },
-
         ],
     },
     {
-        path: '/login',
+        path: '',
         element: <User />,
         children: [
             {
                 path: '/login',
                 element: <Login />
+            },
+            {
+                path: '/register',
+                element: <Register />
             }
         ]
     },
 
     {
         path: '/dashboard',
-        element: <Dashboard />
+        element: <Dashboard />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Profile />
+            },
+            {
+                path: '/dashboard/task',
+                element: <TaskManager />
+            }
+        ]
+
+
     }
 ]);
 
