@@ -1,12 +1,13 @@
 import Hero from "../../components/homepageComponents/Hero";
+import TargetUsers from "../../components/homepageComponents/TargetUsers";
 import Usibility from "../../components/homepageComponents/Usibility";
 
 const Home = () => {
     return (
-        <div className="h-screen">
+        <div className="min-h-screen bg-white">
             <Hero />
             <Usibility />
-            Task Management System Or TMS
+            <TargetUsers />
         </div>
     );
 };

@@ -10,14 +10,13 @@ const Navbar = () => {
                     <NavLink className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg' to='/'>Home</NavLink>
                     <NavLink to='/about' className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg' >About</NavLink>
                     <NavLink to='/contact' className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg' >Contact Us</NavLink>
-                    <NavLink className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg'  to='/dashboard'>Dashboard</NavLink>
                 </div>
                 <div className="text-3xl font-extrabold">
-                    <h2>TMS</h2>
+                    <NavLink to='/' className='text-3xl font-extrabold text-white' >TMS</NavLink>
                 </div>
                 <div className="flex justify-center gap-3">
-                    <p className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg' >dark</p>
-                    <p className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg' >Log In</p>
+                    <NavLink className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg text-yellow-400' to='/dashboard'>Dashboard</NavLink>
+                    <NavLink className='hover:bg-yellow-200 hover:text-black px-4 py-2 rounded-lg' to='/login'>Log In</NavLink>
                 </div>
             </div>
         </div>
