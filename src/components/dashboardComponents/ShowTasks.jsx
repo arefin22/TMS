@@ -73,7 +73,7 @@ function ShowTasks() {
                     </DragOverlay>
                 </div>
             </div>
-            <div className='bg-black min-h-9 w-96'>
+            <div className='bg-black min-h-28 w-96'>
                 <SortableContext items={items} strategy={verticalListSortingStrategy} >
                     <Droppable>
                         {isDropped ? <SortableItem id={activeId} /> : 'Drop here'}

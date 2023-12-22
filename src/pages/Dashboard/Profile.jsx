@@ -8,6 +8,8 @@ const Profile = () => {
     const { user } = useContext(AuthContext)
     const { singleUser, loading } = useSingleUser(user?.email)
 
+
+
     return (
         <div>
             {
@@ -15,12 +17,12 @@ const Profile = () => {
                     ? <>
                         <Loading />
                     </>
-                    : <div className="flex flex-col mt-10 justify-start">
-                        <img src={singleUser?.avatar} alt="" className="w-44 h-44 mb-4 rounded-full" />
-                        <p className="text-lg font-medium"><span className="lg:text-3xl font-bold uppercase mx-4">{singleUser?.name}</span> ({singleUser?.status})</p>
-                        <p className="text-lg font-medium">Email : <span className="text-xl font-bold mx-4">{singleUser?.email}</span></p>
-                        <p className="text-lg font-medium">Blood Group : {singleUser?.bloodGroup}</p>
-                        <p className="text-lg font-medium">Address : {singleUser?.upazila}, {singleUser?.district}.</p>
+                    : <div >
+                        <div className="flex flex-col mt-10 justify-center w-full">
+                            <img src={singleUser[0]?.image} alt="" className="w-44 h-44 mb-4 rounded-full" />
+                            <p className="text-lg font-medium"><span className="lg:text-3xl font-bold uppercase mx-4">{singleUser[0]?.name}</span></p>
+                            <p className="text-lg font-medium">Email : <span className="text-xl font-bold mx-4">{singleUser[0]?.email}</span></p>
+                        </div>
                     </div>
             }
 

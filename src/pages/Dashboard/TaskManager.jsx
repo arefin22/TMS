@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddATask from "../../components/dashboardComponents/AddATask";
-import ShowTasks from "../../components/dashboardComponents/ShowTasks";
+// import ShowTasks from "../../components/dashboardComponents/ShowTasks";
+import Tasks from "../../components/dashboardComponents/Tasks";
 
 
 const TaskManager = () => {
@@ -15,7 +16,8 @@ const TaskManager = () => {
                     <AddATask tasks={tasks} setTasks={setTasks} />
                 </div>
                 <div className="h-36">
-                    <ShowTasks tasks={tasks} />
+                    {/* <ShowTasks tasks={tasks} /> */}
+                    <Tasks tasks={tasks}></Tasks>
                 </div>
             </div>
         </div>
