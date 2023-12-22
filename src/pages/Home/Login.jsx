@@ -1,12 +1,13 @@
 import { useContext } from "react";
-import {  NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authentications/AuthProvider";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
+    const { signInUser, signInUsingPopup } = useContext(AuthContext)
     const location = useLocation();
-    const { signInUser } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const handleLogin = e => {
@@ -14,8 +15,20 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        const loginedData = {email, password}
-        console.log(loginedData);
+        signInUser(email, password)
+            .then(result => {
+                const loggedInUser = result.user
+                console.log(loggedInUser);
+                navigate(location?.state ? location?.state : '/')
+                // const user = { email }
+                // axios.post('https://jobs-hq-server.vercel.app/jwt', user)
+                //     .then(res => {
+                //         console.log(res);
+                //         toast('Log In Successful', res)
+                //     })
+            })
+            .catch(err => toast('Invalid Email or Password', err))
+
     }
     return (
         <div>
@@ -26,9 +39,10 @@ const Login = () => {
                     <input type="password" placeholder="Password" name="password" className="input w-full max-w-xs" />
                     <input type="submit" className="btn hover:bg-yellow-200 hover:text-black" value="Log In" />
                 </form>
-                <p className="mt-6">New Here ? 
+                <p className="mt-6">New Here ?
                     <NavLink className="text-blue-700" to='/register'> Register</NavLink>
                 </p>
+                <button onClick={signInUsingPopup} className="btn hover:bg-yellow-200 hover:text-black border-0 mt-5">Login Using Google</button>
             </div>
         </div>
     );
