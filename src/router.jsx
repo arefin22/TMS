@@ -8,6 +8,8 @@ import User from "./pages/Home/User";
 import Register from "./pages/Home/Register";
 import Profile from "./pages/Dashboard/Profile";
 import TaskManager from "./pages/Dashboard/TaskManager";
+import Contact from "./pages/Home/Contact";
+import About from "./pages/Home/About";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home />
             },
+            {
+                path: '/about',
+                element: <About />
+            },
+            {
+                path: '/contact',
+                element: <Contact />
+            }
         ],
     },
     {
