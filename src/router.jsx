@@ -10,6 +10,7 @@ import Profile from "./pages/Dashboard/Profile";
 import TaskManager from "./pages/Dashboard/TaskManager";
 import Contact from "./pages/Home/Contact";
 import About from "./pages/Home/About";
+import PrivateRoute from "./authentications/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -48,15 +49,15 @@ const router = createBrowserRouter([
 
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
-                element: <Profile />
+                element: <PrivateRoute><Profile /></PrivateRoute>
             },
             {
                 path: '/dashboard/task',
-                element: <TaskManager />
+                element: <PrivateRoute><TaskManager /></PrivateRoute>
             }
         ]
 

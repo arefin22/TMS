@@ -10,29 +10,33 @@ const Login = () => {
     const location = useLocation();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
-    const handleLogin = e => {
-        e.preventDefault()
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signInUser(email, password)
-            .then(result => {
-                const loggedInUser = result.user
-                console.log(loggedInUser);
-                navigate(location?.state ? location?.state : '/')
-                // const user = { email }
-                // axios.post('https://jobs-hq-server.vercel.app/jwt', user)
-                //     .then(res => {
-                //         console.log(res);
-                //         toast('Log In Successful', res)
-                //     })
-            })
-            .catch(err => toast('Invalid Email or Password', err))
+    const handleLogin = async e => {
+        try {
+            e.preventDefault()
+            const form = e.target
+            const email = form.email.value;
+            const password = form.password.value;
+            // const loginData = { email, password };
+            // console.log(loginData);
 
+
+
+            const result = await signInUser(email, password);
+            const loggedInUser = result.user
+            console.log(loggedInUser);
+            navigate(location?.state ? location?.state : '/')
+            // toast('Log In Successful')
+            const loggedUser = { email }
+            const res = await axiosPublic.post('/jwt', loggedUser)
+            toast('Log In Successful', res);
+            console.log(res);
+        }
+        catch (err) { console.log('Invalid Email or Password', err) }
     }
+
     return (
         <div>
-            <div className="mx-auto w-full text-center">
+            <div className="mx-auto w-full bg-white h-dvh text-center">
                 <h2 className="text-2xl font-bold p-6">Log In</h2>
                 <form onSubmit={handleLogin} className="flex flex-col items-center justify-center gap-4">
                     <input type="email" placeholder="Email Address" name="email" className="input w-full max-w-xs" />
